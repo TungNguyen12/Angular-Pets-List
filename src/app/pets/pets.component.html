@@ -14,13 +14,4 @@
   </li>
 </ul>
 
-<div *ngIf="selectedPet">
-  <h2>{{ selectedPet.name | uppercase }} details</h2>
-  <div>id: {{ selectedPet.id }}</div>
-  <div>
-    <label for="pet-name">Pet name:</label>
-    <input id="pet-name" [(ngModel)]="selectedPet.name" placeholder="name" />
-  </div>
-</div>
-
 <app-pet-info [pet]="selectedPet"></app-pet-info>
