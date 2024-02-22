@@ -25,24 +25,12 @@ import { RouterLink, RouterOutlet } from '@angular/router'
   ],
 })
 export class PetsComponent implements OnInit {
-  selectedPet?: Pet
-
   pets: Pet[] = []
 
-  constructor(
-    private petService: PetService,
-    private messageService: MessageService
-  ) {}
+  constructor(private petService: PetService) {}
 
   ngOnInit(): void {
     this.getPets()
-  }
-
-  onSelect(pet: Pet): void {
-    this.selectedPet = pet
-    this.messageService.add(
-      `PetsComponent: Selected pet id=${pet.id} name=${pet.name}`
-    )
   }
 
   getPets(): void {

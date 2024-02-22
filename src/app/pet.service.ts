@@ -17,4 +17,10 @@ export class PetService {
     this.messageService.add('PetService: fetched pets')
     return pets
   }
+
+  getOnePet(id: number): Observable<Pet> {
+    const pet = PETS.find((pet) => pet.id === id)!
+    this.messageService.add(`PetService: retrieved the pet with id = ${id}`)
+    return of(pet)
+  }
 }

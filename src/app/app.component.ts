@@ -8,13 +8,7 @@ import { MessagesComponent } from './messages/messages.component'
   standalone: true,
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
-  imports: [
-    RouterOutlet,
-    PetsComponent,
-    MessagesComponent,
-    RouterOutlet,
-    RouterModule,
-  ],
+  imports: [PetsComponent, MessagesComponent, RouterOutlet, RouterModule],
 })
 export class AppComponent {
   title = 'My pets'

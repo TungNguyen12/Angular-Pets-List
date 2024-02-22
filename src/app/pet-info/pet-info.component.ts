@@ -1,7 +1,11 @@
 import { Component, Input } from '@angular/core'
 import { FormsModule } from '@angular/forms'
-import { Pet } from '../pet'
 import { NgIf, UpperCasePipe } from '@angular/common'
+import { ActivatedRoute } from '@angular/router'
+import { Location } from '@angular/common'
+
+import { Pet } from '../pet'
+import { PetService } from '../pet.service'
 
 @Component({
   selector: 'app-pet-info',
@@ -11,5 +15,24 @@ import { NgIf, UpperCasePipe } from '@angular/common'
   styleUrl: './pet-info.component.css',
 })
 export class PetInfoComponent {
-  @Input() pet?: Pet
+  pet: Pet | undefined
+
+  constructor(
+    private route: ActivatedRoute,
+    private petService: PetService,
+    private location: Location
+  ) {}
+
+  ngOnInit(): void {
+    this.getOnePet()
+  }
+
+  getOnePet(): void {
+    const id = Number(this.route.snapshot.paramMap.get('id'))
+    this.petService.getOnePet(id).subscribe((pet) => (this.pet = pet))
+  }
+
+  goBack(): void {
+    this.location.back()
+  }
 }
