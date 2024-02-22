@@ -1,4 +1,24 @@
 <h2>My pets</h2>
+
+<div>
+  <label for="new-pet">Pet name: </label>
+  <input id="new-pet" #petName />
+  <label for="new-pet">Pet type: </label>
+  <input id="new-pet" #petType />
+
+  <button
+    type="button"
+    class="add-button"
+    (click)="
+      addNewPet(petName.value, petType.value);
+      petName.value = '';
+      petType.value = ''
+    "
+  >
+    Add the new pet to the list
+  </button>
+</div>
+
 <ul class="pets">
   <li *ngFor="let pet of pets">
     <a routerLink="/detail/{{ pet.id }}">

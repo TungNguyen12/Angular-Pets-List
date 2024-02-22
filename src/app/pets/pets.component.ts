@@ -36,4 +36,16 @@ export class PetsComponent implements OnInit {
   getPets(): void {
     this.petService.getPets().subscribe((pets) => (this.pets = pets))
   }
+
+  addNewPet(name: string, type: string): void {
+    name = name.trim()
+
+    if (!name || !type) {
+      return
+    }
+
+    this.petService.addNewPet({ name, type } as Pet).subscribe((pet) => {
+      this.pets.push(pet)
+    })
+  }
 }
