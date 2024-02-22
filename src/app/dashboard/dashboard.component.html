@@ -1,1 +1,7 @@
-<p>dashboard works!</p>
+<h2>My current pets</h2>
+
+<div class="pets-menu">
+  <a *ngFor="let pet of pets" routerLink="/detail/{{ pet.id }}">
+    {{ pet.name }}
+  </a>
+</div>
