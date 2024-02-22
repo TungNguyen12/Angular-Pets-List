@@ -1,6 +1,7 @@
-import { Injectable } from '@angular/core'
-
+import { Inject, Injectable } from '@angular/core'
 import { Observable, of } from 'rxjs'
+import { HttpClient, HttpHeaders } from '@angular/common/http'
+import { catchError, map, tap } from 'rxjs/operators'
 
 import { Pet } from './pet'
 import { PETS } from './pet-list'
@@ -10,12 +11,29 @@ import { MessageService } from './message.service'
   providedIn: 'root',
 })
 export class PetService {
-  constructor(private messageService: MessageService) {}
+  private petsUrl = 'api/pets'
+
+  constructor(
+    private http: HttpClient,
+    private messageService: MessageService
+  ) {}
+
+  private handleError<T>(operation = 'operation', result?: T) {
+    return (error: any): Observable<T> => {
+      this.log(`${operation} failed: ${error.message}`)
+
+      return of(result as T)
+    }
+  }
+
+  private log(message: string) {
+    this.messageService.add(`PetService: ${message}`)
+  }
 
   getPets(): Observable<Pet[]> {
-    const pets = of(PETS)
-    this.messageService.add('PetService: fetched pets')
-    return pets
+    return this.http
+      .get<Pet[]>(this.petsUrl)
+      .pipe(catchError(this.handleError<Pet[]>(`getPets`, [])))
   }
 
   getOnePet(id: number): Observable<Pet> {
