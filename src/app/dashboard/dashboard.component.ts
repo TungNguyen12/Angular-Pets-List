@@ -3,11 +3,12 @@ import { Component } from '@angular/core'
 import { Pet } from '../pet'
 import { PetService } from '../pet.service'
 import { RouterLink, RouterOutlet } from '@angular/router'
+import { PetSearchComponent } from '../pet-search/pet-search.component'
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [NgFor, RouterOutlet, RouterLink],
+  imports: [NgFor, RouterOutlet, RouterLink, PetSearchComponent],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.css',
 })

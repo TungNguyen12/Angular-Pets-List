@@ -79,9 +79,25 @@ export class PetService {
   deletePet(id: number): Observable<Pet> {
     const url = `${this.petsUrl}/${id}`
 
-    return this.http.delete<Pet>(url).pipe(
+    return this.http.delete<Pet>(url, this.httpOptions).pipe(
       tap((_) => this.log(`You delete pet with id of ${id}`)),
       catchError(this.handleError<Pet>('deletePet'))
+    )
+  }
+
+  //SEARCH PET
+  searchPets(term: string): Observable<Pet[]> {
+    if (!term.trim()) {
+      return of([])
+    }
+
+    return this.http.get<Pet[]>(`${this.petsUrl}/?name=${term}`).pipe(
+      tap((searchedList) =>
+        searchedList.length
+          ? this.log(`Search result matching "${term}"`)
+          : this.log(`No pet matching "${term}`)
+      ),
+      catchError(this.handleError<Pet[]>('searchPet', []))
     )
   }
 }
