@@ -48,4 +48,9 @@ export class PetsComponent implements OnInit {
       this.pets.push(pet)
     })
   }
+
+  deletePet(deletedPet: Pet) {
+    this.pets = this.pets.filter((pet) => pet !== deletedPet)
+    this.petService.deletePet(deletedPet.id).subscribe()
+  }
 }

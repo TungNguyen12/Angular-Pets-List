@@ -74,4 +74,14 @@ export class PetService {
       catchError(this.handleError<Pet>('updatePet'))
     )
   }
+
+  //DELETE PET
+  deletePet(id: number): Observable<Pet> {
+    const url = `${this.petsUrl}/${id}`
+
+    return this.http.delete<Pet>(url).pipe(
+      tap((_) => this.log(`You delete pet with id of ${id}`)),
+      catchError(this.handleError<Pet>('deletePet'))
+    )
+  }
 }

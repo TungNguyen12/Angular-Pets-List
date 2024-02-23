@@ -36,6 +36,7 @@ export class PetInfoComponent {
     this.location.back()
   }
 
+  // for updating pet info
   saveChange(): void {
     if (this.pet) {
       this.petService.updatePet(this.pet).subscribe(() => this.goBack())
