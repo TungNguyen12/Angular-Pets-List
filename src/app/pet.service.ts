@@ -3,10 +3,9 @@ import { Observable, of } from 'rxjs'
 import { HttpClient, HttpHeaders } from '@angular/common/http'
 import { catchError, map, tap } from 'rxjs/operators'
 
-import { Pet } from './pet'
+import { Pet, PetUpdate } from './pet'
 import { PETS } from './pet-list'
 import { MessageService } from './message.service'
-
 
 @Injectable({
   providedIn: 'root',
@@ -52,10 +51,27 @@ export class PetService {
     )
   }
 
+  // CREATE NEW PET
   addNewPet(pet: Pet): Observable<Pet> {
     return this.http.post<Pet>(this.petsUrl, pet, this.httpOptions).pipe(
-      tap((newPet:Pet) => this.log(`added new pet to my list with id = ${newPet.id} and ${newPet.name} is a stupid ${newPet.type}`)),
+      tap((newPet: Pet) =>
+        this.log(
+          `added new pet to my list with id = ${newPet.id} and ${newPet.name} is a stupid ${newPet.type}`
+        )
+      ),
       catchError(this.handleError<Pet>('addNewPet'))
+    )
+  }
+
+  // UPDATE PET INFO
+  updatePet(pet: Pet): Observable<PetUpdate> {
+    return this.http.put<Pet>(this.petsUrl, pet, this.httpOptions).pipe(
+      tap((updatedPet: Pet) =>
+        this.log(
+          `update your pet, id=${updatedPet.id} with name of ${updatedPet.name} and type of ${updatedPet.type}`
+        )
+      ),
+      catchError(this.handleError<Pet>('updatePet'))
     )
   }
 }

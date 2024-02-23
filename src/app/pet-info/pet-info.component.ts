@@ -35,4 +35,10 @@ export class PetInfoComponent {
   goBack(): void {
     this.location.back()
   }
+
+  saveChange(): void {
+    if (this.pet) {
+      this.petService.updatePet(this.pet).subscribe(() => this.goBack())
+    }
+  }
 }

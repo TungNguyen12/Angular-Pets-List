@@ -39,7 +39,7 @@ export class PetsComponent implements OnInit {
 
   addNewPet(name: string, type: string): void {
     name = name.trim()
-
+    ;('')
     if (!name || !type) {
       return
     }

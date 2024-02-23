@@ -5,6 +5,9 @@
   <div>
     <label for=""></label>
     <input id="pet-name" [(ngModel)]="pet.name" placeholder="name" />
+    <input id="pet-type" [(ngModel)]="pet.type" placeholder="type" />
   </div>
+
   <button type="button" (click)="goBack()">🔙👈🏻🔙</button>
+  <button type="button" (click)="saveChange()">Save change</button>
 </div>
