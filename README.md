@@ -1,3 +1,12 @@
+# Projects purposes
+
+- Getting familiar with Angular Routing
+- Implementation of server-side DB and HTTP CLient
+- NgFor for display a list
+- NgIf to conditionally include or exclude HTML
+- AppRoutingModule
+- Simple CRUD with server side DB
+
 # AngularPets
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.2.0.
