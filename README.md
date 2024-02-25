@@ -7,6 +7,10 @@
 - AppRoutingModule
 - Simple CRUD with server side DB
 
+# Release
+
+[VISIT MY DEPLOYMENT](https://pets.tungnguyen.site/dashboard)
+
 # AngularPets
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.2.0.
