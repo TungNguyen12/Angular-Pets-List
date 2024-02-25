@@ -16,17 +16,10 @@
             "outputPath": "dist/angular-pets",
             "index": "src/index.html",
             "browser": "src/main.ts",
-            "polyfills": [
-              "zone.js"
-            ],
+            "polyfills": ["zone.js"],
             "tsConfig": "tsconfig.app.json",
-            "assets": [
-              "src/favicon.ico",
-              "src/assets"
-            ],
-            "styles": [
-              "src/styles.css"
-            ],
+            "assets": ["src/favicon.ico", "src/assets"],
+            "styles": ["src/styles.css"],
             "scripts": [],
             "server": "src/main.server.ts",
             "prerender": true,
@@ -79,19 +72,19 @@
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "polyfills": [
-              "zone.js",
-              "zone.js/testing"
-            ],
+            "polyfills": ["zone.js", "zone.js/testing"],
             "tsConfig": "tsconfig.spec.json",
-            "assets": [
-              "src/favicon.ico",
-              "src/assets"
-            ],
-            "styles": [
-              "src/styles.css"
-            ],
+            "assets": ["src/favicon.ico", "src/assets"],
+            "styles": ["src/styles.css"],
             "scripts": []
+          }
+        },
+        "deploy": {
+          "builder": "@netlify-builder/deploy:deploy",
+          "options": {
+            "outputPath": "dist/angular-pets/browser",
+            "netlifyToken": "nfp_2pxf6GZ5HC1hP7iSJ1TjrN5SDmdA97ep7aa9",
+            "siteId": "91d8dd24-007c-4fbe-bab4-0e8e658e1d64"
           }
         }
       }
