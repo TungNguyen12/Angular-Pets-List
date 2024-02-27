@@ -1,36 +1,37 @@
-<h2>My pets</h2>
+<div class="app-pets">
+  <h2>My pets</h2>
 
-<div>
-  <label for="new-pet-name">Pet name: </label>
-  <input id="new-pet-name" #petName />
-  <label for="new-pet-type">Pet type: </label>
-  <input id="new-pet-type" #petType />
+  <div class="app-pets-form">
+    <input id="new-pet-name" #petName placeholder="Pet name..." />
 
-  <button
-    type="button"
-    class="add-button"
-    (click)="
-      addNewPet(petName.value, petType.value);
-      petName.value = '';
-      petType.value = ''
-    "
-  >
-    Add the new pet to the list
-  </button>
-</div>
+    <input id="new-pet-type" #petType placeholder="Type, eg, dog, cat?..." />
 
-<ul class="pets">
-  <li *ngFor="let pet of pets">
-    <a routerLink="/detail/{{ pet.id }}">
-      <span class="badge">{{ pet.id }}</span> {{ pet.name }}
-    </a>
     <button
       type="button"
-      class="delete"
-      title="delete pet"
-      (click)="deletePet(pet)"
+      class="add-button"
+      (click)="
+        addNewPet(petName.value, petType.value);
+        petName.value = '';
+        petType.value = ''
+      "
     >
-      Delete
+      Add new pet
     </button>
-  </li>
-</ul>
+  </div>
+
+  <ul class="pets">
+    <li *ngFor="let pet of pets">
+      <a routerLink="/detail/{{ pet.id }}">
+        <span class="badge">{{ pet.id }}</span> {{ pet.name }}
+      </a>
+      <button
+        type="button"
+        class="delete"
+        title="delete pet"
+        (click)="deletePet(pet)"
+      >
+        Delete
+      </button>
+    </li>
+  </ul>
+</div>

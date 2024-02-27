@@ -1,4 +1,11 @@
 /* HeroDetailComponent's private CSS styles */
+.pet-info {
+  /* display: flex;
+  flex-direction: column;
+  align-items: center; */
+  margin-left: 30%;
+}
+
 label {
   color: #435960;
   font-weight: bold;

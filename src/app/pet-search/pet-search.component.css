@@ -1,5 +1,9 @@
 /* HeroSearch private styles */
 
+.app-search {
+  margin-left: 30%;
+}
+
 label {
   display: block;
   font-weight: bold;
