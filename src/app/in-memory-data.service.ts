@@ -21,6 +21,7 @@ export class InMemoryDataService implements InMemoryDbService {
   }
 
   genId(pets: Pet[]): number {
+    console.log('genId works')
     return pets.length > 0 ? Math.max(...pets.map((pet) => pet.id)) + 1 : 11
   }
 }
